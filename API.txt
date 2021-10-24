@@ -1,0 +1,14 @@
+function showTemperature(response) {
+  let temperature = Math.round(response.data.main.temp);
+  let city = response.data.name;
+  let message = `The temperature in ${city} is ${temperature} degrees`;
+  let h1 = document.querySelector("h1");
+  h1.innerHTML = message;
+}
+
+let city = "Sydney";
+let units = "metric";
+let apiKey = "e6c2364656962bdcb16bc352fc42569a";
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
+
+axios.get(apiUrl).then(showTemperature);
